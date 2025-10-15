@@ -1,15 +1,9 @@
-import readLine from "readline";
-
-const rl = readLine.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
+import { Console } from "@woowacourse/mission-utils";
 
 let sum = 0;
-
 class App {
   async run() {
-    rl.question("덧셈할 문자열을 입력해 주세요.\n", (answer) => {
+    Console.readLineAsync("덧셈할 문자열을 입력해 주세요.\n").then((answer) => {
       if (answer.includes("," || ":")) {
         answer.split(/[,\n:]/).forEach((num) => {
           if (num < 0) {
@@ -30,8 +24,7 @@ class App {
       } else {
         throw new Error("[ERROR] 올바른 문자열을 입력해 주세요.");
       }
-      console.log("결과 : " + sum);
-      rl.close();
+      Console.print("결과 : " + sum);
     });
   }
 }
