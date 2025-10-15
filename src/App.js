@@ -12,6 +12,9 @@ class App {
     rl.question("덧셈할 문자열을 입력해 주세요.\n", (answer) => {
       if (answer.includes("," || ":")) {
         answer.split(/[,\n:]/).forEach((num) => {
+          if (num < 0) {
+            throw new Error("[ERROR] 음수는 입력할 수 없습니다.");
+          }
           sum += parseInt(num);
         });
       } else if (answer.includes("//")) {
@@ -19,8 +22,13 @@ class App {
         const SPLIT_ANSWER = answer.split("\\n")[1];
 
         SPLIT_ANSWER.split(CUSTOM_DELIMITER).forEach((num) => {
+          if (num < 0) {
+            throw new Error("[ERROR] 음수는 입력할 수 없습니다.");
+          }
           sum += parseInt(num);
         });
+      } else {
+        throw new Error("[ERROR] 올바른 문자열을 입력해 주세요.");
       }
       console.log("결과 : " + sum);
       rl.close();
