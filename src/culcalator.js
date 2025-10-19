@@ -11,10 +11,10 @@ export const calculator = async () => {
   //쉼표(,) 또는 콜론(:)을 구분자로 가지는 문자열을 전달하는 경우
   if (DEFAULT_DELIMITERS.test(answer)) {
     answer.split(DEFAULT_DELIMITERS).forEach((num) => {
-      if (num < 0) {
+      if (Number(num) < 0) {
         throw new Error("[ERROR] 음수는 입력할 수 없습니다.");
       }
-      sum += parseInt(num);
+      sum += Number(num);
     });
   }
   // 커스텀 구분자 문자열인 경우
@@ -23,10 +23,10 @@ export const calculator = async () => {
     const SPLIT_ANSWER = answer.match(CUSTOM_DELIMITER_REGEX)[2];
 
     SPLIT_ANSWER.split(CUSTOM_DELIMITER).forEach((num) => {
-      if (num < 0) {
+      if (Number(num) < 0) {
         throw new Error("[ERROR] 음수는 입력할 수 없습니다.");
       }
-      sum += parseInt(num);
+      sum += Number(num);
     });
   } else {
     throw new Error("[ERROR] 올바른 문자열을 입력해 주세요.");
