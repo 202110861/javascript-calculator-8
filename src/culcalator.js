@@ -19,6 +19,8 @@ export const calculator = async () => {
   }
   // 커스텀 구분자 문자열인 경우
   else if (CUSTOM_DELIMITER_REGEX.test(answer)) {
+    if (!answer.match(CUSTOM_DELIMITER_REGEX))
+      throw new Error("[ERROR] 올바른 커스텀 구분자 형식이 아닙니다.");
     const CUSTOM_DELIMITER = answer.match(CUSTOM_DELIMITER_REGEX)[1];
     const SPLIT_ANSWER = answer.match(CUSTOM_DELIMITER_REGEX)[2];
 
