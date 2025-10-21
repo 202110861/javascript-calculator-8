@@ -1,5 +1,9 @@
+import { calculator } from "./culcalator.js";
+
 class App {
-  async run() {}
+  async run() {
+    await calculator();
+  }
 }
 
 export default App;
